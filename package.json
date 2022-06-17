@@ -1,0 +1,31 @@
+{
+  "name": "grid-react",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "lerna run build --scope grid-react",
+    "watch": "lerna run watch --scope grid-react",
+    "package": "lerna exec --scope grid-react -- npm pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebefazzani/grid-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calebefazzani/grid-react/issues"
+  },
+  "homepage": "https://github.com/calebefazzani/grid-react#readme",
+  "devDependencies": {
+    "lerna": "^5.1.4",
+    "nx": "^14.3.6"
+  }
+}

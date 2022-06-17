@@ -1,0 +1,22 @@
+$with: 600px;
+$height: 200px;
+
+.helloScss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $with;
+  height: $height;
+
+  border: 1px solid red;
+  border-radius: 8px;
+}
+
+.helloCss {
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}
