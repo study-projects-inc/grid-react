@@ -1,4 +1,4 @@
-import require$$0, { Fragment } from 'react';
+import require$$0 from 'react';
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -1408,67 +1408,28 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$1 = ".styles-module_helloScss__RO3-y {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 600px;\n  height: 200px;\n  border: 1px solid red;\n  border-radius: 8px; }\n\n.styles-module_helloCss__5bBsJ {\n  margin: 0;\n  padding: 0;\n  color: red;\n  font-weight: bold;\n  font-size: 2rem; }\n";
-var scssClasses$1 = {"helloScss":"styles-module_helloScss__RO3-y","helloCss":"styles-module_helloCss__5bBsJ"};
-styleInject(css_248z$1);
-
-var Hello = function (_a) {
-    var name = _a.name;
-    return (jsxRuntime.exports.jsx("div", __assign({ className: scssClasses$1.helloScss }, { children: jsxRuntime.exports.jsxs("p", __assign({ className: scssClasses$1.helloCss }, { children: ["Hello, ", name] })) })));
-};
-
-var _a;
-var _b = ['classic', 'stack', 'custom'], CLASSIC = _b[0], STACK = _b[1], CUSTOM = _b[2];
-var gridLayoutCssName = (_a = {},
-    _a[CLASSIC] = 'classicLayout',
-    _a[STACK] = 'stackLayout',
-    _a[CUSTOM] = 'customLayout',
-    _a);
-
-var css_248z = ".styles-module_grid__x-TWg, .styles-module_classicLayout__UItTl, .styles-module_stackLayout__QZkfC, .styles-module_customLayout__Qu7ca {\n  display: grid;\n  position: relative;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  background-color: #eec0c0; }\n\n.styles-module_classicLayout__UItTl {\n  grid-template-columns: 1fr 60% 1fr;\n  grid-template-rows: 1fr 70% 1fr;\n  grid-template-areas: 'header header header' 'left-sidebar main right-sidebar' 'footer footer footer'; }\n\n.styles-module_stackLayout__QZkfC {\n  grid-template-rows: auto 1fr auto; }\n";
-var scssClasses = {"grid":"styles-module_grid__x-TWg","classicLayout":"styles-module_classicLayout__UItTl","stackLayout":"styles-module_stackLayout__QZkfC","customLayout":"styles-module_customLayout__Qu7ca"};
+var css_248z = ".style-module_gridContainer__kQYfm {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  grid-template-rows: repeat(12, 1fr);\n  width: 100%;\n  height: 100%; }\n";
+var styles = {"gridContainer":"style-module_gridContainer__kQYfm"};
 styleInject(css_248z);
 
-var GridLayout = function (_a) {
-    var children = _a.children, _b = _a.layoutType, layoutType = _b === void 0 ? 'custom' : _b;
-    var gridCssStyle = gridLayoutCssName[layoutType];
-    return jsxRuntime.exports.jsx(Fragment, { children: jsxRuntime.exports.jsx("div", __assign({ className: scssClasses[gridCssStyle] }, { children: children })) });
+var GridContainer = function (_a) {
+    var children = _a.children;
+    return jsxRuntime.exports.jsx("div", __assign({ className: styles.gridContainer }, { children: children }));
 };
 
-var WithGridArea = function (gridArea) { return function (WrappedComponent) {
-    return function (props) {
-        return jsxRuntime.exports.jsx(Fragment, { children: jsxRuntime.exports.jsx(WrappedComponent, __assign({}, props, { gridArea: gridArea })) });
-    };
-}; };
-
-var MainContent = function (_a) {
-    var children = _a.children, _b = _a.customStyles, customStyles = _b === void 0 ? {} : _b, _c = _a.classNames, classNames = _c === void 0 ? [] : _c, gridArea = _a.gridArea;
-    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, (customStyles || {})), { gridArea: gridArea }), className: classNames.join(' ') }, { children: children }));
+var checkItemFill = function (size, field) {
+    var _a;
+    if (size === void 0) { size = 1; }
+    return _a = {}, _a[field] = "span ".concat(size), _a;
 };
-var mainContent = WithGridArea('main')(MainContent);
-
-var Footer = function (_a) {
-    var children = _a.children, _b = _a.customStyles, customStyles = _b === void 0 ? {} : _b, _c = _a.classNames, classNames = _c === void 0 ? [] : _c, gridArea = _a.gridArea;
-    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, (customStyles || {})), { gridArea: gridArea }), className: classNames.join(' ') }, { children: children }));
+var generateGridContentStyle = function (_a) {
+    var colSpan = _a.colSpan, rowSpan = _a.rowSpan, align = _a.align;
+    return __assign(__assign(__assign({}, checkItemFill(rowSpan, 'gridRowEnd')), checkItemFill(colSpan, 'gridColumnEnd')), (align ? { alignSelf: align } : {}));
 };
-var footer = WithGridArea('footer')(Footer);
-
-var Header = function (_a) {
-    var children = _a.children, _b = _a.customStyles, customStyles = _b === void 0 ? {} : _b, _c = _a.classNames, classNames = _c === void 0 ? [] : _c, gridArea = _a.gridArea;
-    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, (customStyles || {})), { gridArea: gridArea }), className: classNames.join(' ') }, { children: children }));
+var GridContent = function (props) {
+    var children = props.children, className = props.className, style = props.style;
+    var contentStyles = generateGridContentStyle(props);
+    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, style), contentStyles), className: className }, { children: children }));
 };
-var header = WithGridArea('header')(Header);
 
-var LeftSidebar = function (_a) {
-    var children = _a.children, _b = _a.customStyles, customStyles = _b === void 0 ? {} : _b, _c = _a.classNames, classNames = _c === void 0 ? [] : _c, gridArea = _a.gridArea;
-    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, (customStyles || {})), { gridArea: gridArea }), className: classNames.join(' ') }, { children: children }));
-};
-var leftSidebar = WithGridArea('left-sidebar')(LeftSidebar);
-
-var RightSidebar = function (_a) {
-    var children = _a.children, _b = _a.customStyles, customStyles = _b === void 0 ? {} : _b, _c = _a.classNames, classNames = _c === void 0 ? [] : _c, gridArea = _a.gridArea;
-    return jsxRuntime.exports.jsx("div", __assign({ style: __assign(__assign({}, (customStyles || {})), { gridArea: gridArea }), className: classNames.join(' ') }, { children: children }));
-};
-var rightSidebar = WithGridArea('right-sidebar')(RightSidebar);
-
-export { footer as Footer, GridLayout, header as Header, Hello, leftSidebar as LeftSidebar, mainContent as MainContent, rightSidebar as RightSidebar };
+export { GridContainer, GridContent };

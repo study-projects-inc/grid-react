@@ -1,37 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { GridLayout, MainContent, Header, Footer, LeftSidebar, RightSidebar } from 'grid-react';
+import { GridContainer, GridContent } from 'grid-react';
+const content2 = {
+  style: {
+    backgroundColor: 'red'
+  }
+}
 
+const content1 = {
+  style: {
+    backgroundColor: 'blue'
+  }
+}
 
 function App() {
   return (
-    // <Hello />
-    <GridLayout layoutType='classic'>
-      <Header>
-        <h1>Teste</h1>
-      </Header>
-      <LeftSidebar>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </LeftSidebar>
-      <MainContent>
+    <GridContainer>
+      <GridContent {...content1} colSpan={3} rowSpan={4} >
         oi
-      </MainContent>
-      <RightSidebar>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </RightSidebar>
-      <Footer>
-        Teste
-      </Footer>
-    </GridLayout>
+      </GridContent>
+      <GridContent {...content2} colSpan={2} rowSpan={3} >
+        oi
+      </GridContent>
+      <GridContent colSpan={12} rowSpan={1} >
+        oi
+      </GridContent>
+    </GridContainer>
   );
 }
 
